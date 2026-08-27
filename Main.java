@@ -1,142 +1,63 @@
-//kevin santiago forero martinez & shara melo//
+/******************************************************************************
+
+Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP, Ruby, Perl,
+C#, OCaml, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS, JS, SQLite, Prolog.
+Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
 import java.util.Scanner;
+public class Main
+{
+	public static void main(String[] args) {
+	    Scanner teclado = new Scanner (System.in);
+	    int opcion = 0;
+	    float saldo = 0;
+	    
+	    while (opcion != 4){
+	        System.out.println("--------Banco de la Republica--------");
+	        System.out.println("(1): Depositar");
+	        System.out.println("(2): Retirar ");
+	        System.out.println("(3): Ver Saldo ");
+	        System.out.println("(4): Terminar ");
+	        opcion = teclado.nextInt();
+	   switch(opcion){
+	       case 1:
+	           System.out.println("------- Depositar -------");
+	           System.out.println("¿Cuanto deseas depositar?");
+	           saldo += teclado.nextFloat();
+	           System.out.println("se deposito correctamente :D");
+	           break;
+	       case 2 : 
+	           System.out.println("--------Retirar------");
+	           System.out.println("¿Cuanto desea retirar?");
+	           float retiro = teclado.nextFloat();
+	           if (retiro >  0 && retiro <= saldo) {
+	               saldo -= retiro;
+	           }
+	           
+	           else {
+	               System.out.println("Saldo insuficiente D:");
+	               break;
+	           }
+	           case 3 :
+	               System.out.println("------Saldo-------");
+	               System.out.println("Tu saldo es:" + saldo );
+	               break;
+	           case 4 : 
+	               System.out.println("Proceso terminado");
+	               break;
+	           default:
+	           System.out.println("Opcion no valida");
+	           }
+	           }
+	           
+	           
+	       
+	           
+	           
+	   }
+	    }
+		
 
-public class Main { 
 
-    // Variables estáticas
-    static String nombre = "";
-    static String telefono = "";
-    static Double sueldo = 0.0;
-    static String cargo = "";
-    
-    // Bandera para saber si existe usuario
-    static boolean existeUsuario = false;
-
-    public static void main(String[] args) {
-        Scanner teclado = new Scanner(System.in);
-        mostrarMenu(teclado);
-        teclado.close();
-    }
-
-    public static void mostrarMenu(Scanner teclado) {
-        int opcion;
-
-        System.out.println("\n-------BIENVENIDOOO-------");
-        System.out.println("          MENU         ");
-        System.out.println("1.Crear Usuario");
-        System.out.println("2.Verificar usuario");
-        System.out.println("3.Editar Usuario");
-        System.out.println("4.Borrar Usuario");
-        System.out.println("5.Terminar Proceso");
-        System.out.print("seleccione una opcion: ");
-
-        opcion = teclado.nextInt();
-        teclado.nextLine(); 
-
-        switch (opcion) {
-
-            // 1. CREAR USUARIO
-            case 1:
-                if (existeUsuario) {
-                    System.out.println("Ya existe un usuario registrado. Para modificar los datos, use la opcion 3 (Editar Usuario).");
-                    System.out.println("presione Enter para volver al menu principal");
-                    teclado.nextLine();
-                } else {
-                    System.out.println("Nombre:");
-                    nombre = teclado.nextLine();
-
-                    System.out.println("telefono:");
-                    telefono = teclado.nextLine();
-
-                    System.out.println("cargo:");
-                    cargo = teclado.nextLine();
-
-                    System.out.println("sueldo (ingrese sin puntos de miles, ej: 7000000):");
-                    sueldo = teclado.nextDouble();
-                    teclado.nextLine(); // Limpiamos el Enter
-
-                    existeUsuario = true;
-                    System.out.println("--> Usuario guardado exitosamente.");
-                    System.out.println("presione Enter para volver al menu principal");
-                    teclado.nextLine();
-                }
-                mostrarMenu(teclado);
-                break;
-
-            // 2. VERIFICAR USUARIO
-            case 2:
-                if (!existeUsuario) {
-                    System.out.println("No hay ningun usuario registrado. Seleccione la opcion 1 para crear uno.");
-                    System.out.println("presione Enter para volver al menu principal");
-                    teclado.nextLine();
-                } else {
-                    System.out.println("Nombre:" + nombre);
-                    System.out.println("telefono:" + telefono);
-                    System.out.println("cargo:" + cargo);
-                    System.out.println("sueldo:" + sueldo);
-                    System.out.println("presione Enter para volver al menu principal");
-                    teclado.nextLine();
-                }
-                mostrarMenu(teclado);
-                break;
-
-            // 3. EDITAR USUARIO
-            case 3:
-                if (!existeUsuario) {
-                    System.out.println("No hay ningun usuario registrado para editar. Seleccione la opcion 1 para crear uno.");
-                    System.out.println("presione Enter para volver al menu principal");
-                    teclado.nextLine();
-                } else {
-                    System.out.println("Nombre:");
-                    nombre = teclado.nextLine();
-
-                    System.out.println("telefono:");
-                    telefono = teclado.nextLine();
-
-                    System.out.println("cargo:");
-                    cargo = teclado.nextLine();
-
-                    System.out.println("sueldo (ingrese sin puntos de miles, ej: 7000000):");
-                    sueldo = teclado.nextDouble();
-                    teclado.nextLine();
-
-                    System.out.println("Usuario editado exitosamente.");
-                    System.out.println("presione Enter para volver al menu principal");
-                    teclado.nextLine();
-                }
-                mostrarMenu(teclado);
-                break;
-
-            // 4. BORRAR USUARIO
-            case 4:
-                if (!existeUsuario) {
-                    System.out.println("No hay datos de usuario para borrar. Seleccione la opcion 1 para crear uno.");
-                    System.out.println("presione Enter para volver al menu principal");
-                    teclado.nextLine();
-                } else {
-                    nombre = "";
-                    telefono = "";
-                    cargo = "";
-                    sueldo = 0.0;
-                    existeUsuario = false;
-                    System.out.println("Usuario borrado con exito.");
-                    System.out.println("presione Enter para volver al menu principal");
-                    teclado.nextLine();
-                }
-                mostrarMenu(teclado);
-                break;
-
-            // 5. TERMINAR PROCESO
-            case 5:
-                System.out.println("Programa terminado.");
-                break;
-
-            default:
-                System.out.println("Opcion no valida.");
-                System.out.println("presione Enter para volver al menu principal");
-                teclado.nextLine();
-                mostrarMenu(teclado);
-                break;
-        }
-    }
-}
